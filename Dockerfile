@@ -1,12 +1,10 @@
-FROM debian:stretch
+FROM python:3.6.2-alpine
 
-RUN apt-get update && apt-get install -y \
-        curl \
-        python3 \
-        python3-numpy && \
-    curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python3
+RUN apk add --update curl gcc g++
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 
 RUN pip3 install -U pip \
+        numpy==1.13.3 \
         boto3==1.4.4 \
         flake8-quotes==0.9.0 \
         flake8==3.3.0 \
@@ -17,5 +15,3 @@ RUN pip3 install -U pip \
         pytest-watch==4.1.0 \
         sagaconfig==0.0.4 \
         sagalogger==0.3.4
-
-WORKDIR /www/app
