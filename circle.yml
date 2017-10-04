@@ -30,5 +30,5 @@ deployment:
     commands:
       - echo "{\"https://index.docker.io/v1/\":{\"auth\":\"<AUTH>\",\"email\":\"<EMAIL>\"}}" | sed "s/<EMAIL>/$HUB_EMAIL/;s/<AUTH>/$HUB_AUTH/" > ~/.dockercfg
       - docker tag kosmiobasepy_py sagacify/$CIRCLE_PROJECT_REPONAME:v$CIRCLE_BUILD_NUM
-      - docker tag sagacify/$CIRCLE_PROJECT_REPONAME:v$CIRCLE_BUILD_NUM sagacify/$CIRCLE_PROJECT_REPONAME:$latest
+      - docker tag sagacify/$CIRCLE_PROJECT_REPONAME:v$CIRCLE_BUILD_NUM sagacify/$CIRCLE_PROJECT_REPONAME
       - docker push sagacify/$CIRCLE_PROJECT_REPONAME
